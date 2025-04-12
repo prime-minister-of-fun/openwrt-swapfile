@@ -23,8 +23,13 @@ The luci UI Status->Overview should show the swap available.
 **Problems**
 
 As of 2025-04-12, I had a problem with opkg not returning everything in the base repo.
+
 I set up a new repo. System->Software->Configure opkg
+
 The UI has a "custom feeds" text box where I added my device's repo again under a different name.  
+
 DO NOT blindly copy/paste.  You need your architecture's repo, probably not mine.
+
 src/gz openwrt_base_again https://downloads.openwrt.org/releases/24.10.0/packages/aarch64_cortex-a53/base/
-And then "Update lists"
+
+And then "Update lists" before adding the loop/swap packages
