@@ -1,0 +1,7 @@
+config swap
+    option path /
+    option filename swapfile
+    option size 10
+    option enabled 1
+    option device loop0
+

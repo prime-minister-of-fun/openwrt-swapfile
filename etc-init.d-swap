@@ -1,0 +1,32 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2007 OpenWrt.org
+START=98
+
+EXTRA_COMMANDS="status"
+EXTRA_HELP="        status      Test whether or not the swapfile is mounted"
+
+
+start () {
+        local section="$1"
+        config_get path     "$section" path
+        config_get filename "$section" filename
+        config_get size     "$section" size
+
+        dd if=/dev/zero of=/$path/$filename count=$size
+        losetup /dev/loop0 /$path/$filename
+        mkswap $device
+        swapon $device
+}
+
+stop () {
+       swapoff $device
+}
+
+status () {
+        if [ "$(free | grep -i swap)" ] ; then
+                echo "swap available"
+        else
+                echo "swap not available"
+        fi
+
+}
