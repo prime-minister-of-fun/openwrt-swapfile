@@ -10,7 +10,7 @@ Tune the service to your liking with etc-config-swap.
 2. Adjust etc-config-swap to your preferences.
 3. Check the Problems section before continuing.
 4. Ssh into the device.
-5. On the command line: opk add kmod-loop losetup swap-utils openssh-sftp-server. if you are resource-starved, you might get away with copy/paste.
+5. On the command line: opk add kmod-loop losetup swap-utils openssh-sftp-server
 6. sftp etc-config-swap root@your-openwrt-address:/etc/config/swap
 7. sftp etc-init.d-swap root@your-openwrt-address:/etc/init.d/swap
 8. ssh root@your-openwrt-address
