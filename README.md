@@ -4,12 +4,12 @@ Assumption is the device has a connection to the internet.
 
 This is a riff on this: https://forum.archive.openwrt.org/viewtopic.php?id=12419
 
-My version has status and creates a 10MB swapfile.
+My version has service status and creates a 10MB swapfile.
 Tune the service to your liking with etc-config-swap.
 1. git clone my repo.
 2. Adjust etc-config-swap to your preferences
 3. Ssh into the device.
-4. opk add kmod-loop losetup swap-utils openssh-sftp-server
+4. On the command line: opk add kmod-loop losetup swap-utils openssh-sftp-server. if you are resource-starved, you might get away with copy/paste.
 5. sftp etc-config-swap root@your-openwrt-address:/etc/config/swap
 6. sftp etc-init.d-swap root@your-openwrt-address:/etc/init.d/swap
 7. ssh root@your-openwrt-address
@@ -22,14 +22,10 @@ The luci UI Status->Overview should show the swap available.
 
 **Problems**
 
-As of 2025-04-12, I had a problem with opkg not returning everything in the base repo.
+DO NOT blindly copy/paste.  You need your architecture's repo, probably not mine.  And, maybe repo URLs change.
 
-I set up a new repo. System->Software->Configure opkg
-
-The UI has a "custom feeds" text box where I added my device's repo again under a different name.  
-
-DO NOT blindly copy/paste.  You need your architecture's repo, probably not mine.
-
+As of 2025-04-12, I had a problem with opkg not returning everything in the base repo on a very low-resource device. I set up a new repo. System->Software->Configure opkg.  I set up a new repo by using the UI.  The UI has a "custom feeds" text box where I added my device's repo again under a different name.  
+The "custom feed" looks something like the next line.  _Your architecture's URL is probably different._
 src/gz openwrt_base_again https://downloads.openwrt.org/releases/24.10.0/packages/aarch64_cortex-a53/base/
-
-And then "Update lists" before adding the loop/swap packages
+And then "Update lists."
+After that, you should be able to run opk in the steps above.
