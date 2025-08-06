@@ -27,7 +27,7 @@ DO NOT blindly copy/paste.  You need your architecture's repo, probably not mine
 
 As of 2025-04-12, I had a problem with opkg not returning everything in the base repo on a very low-resource device. I set up a new repo. System->Software->Configure opkg.  I set up a new repo by using the UI.  
 The UI has a "custom feeds" text box where I added my device's repo again under a different name.  The "custom feed" looks something like the next line.  _Your architecture's URL is probably different.
-_
+
 src/gz openwrt_base_again https://downloads.openwrt.org/releases/24.10.0/packages/aarch64_cortex-a53/base/
 
 And then "Update lists."
